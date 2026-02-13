@@ -1,0 +1,212 @@
+/* ============================================================
+   kore-banking-theme.css — Custom theme to match SecureBank UI
+   ============================================================
+   This overrides the default Kore.ai SDK colors to use
+   the same navy blue / white palette as our banking app.
+   ============================================================ */
+
+/* --- Override the SDK's CSS custom properties (light theme) --- */
+.liteTheme-one,
+.kore-chat-window,
+[class*="Theme"] {
+
+  /* Chat Window Main */
+  --sdk-chat-window-bg-color: #ffffff;
+  --sdk-chat-window-font-style: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --sdk-chat-window-box-shadow: 0 8px 32px rgba(26, 58, 92, 0.2);
+  --sdk-chat-window-border-color: #e2e8f0;
+
+  /* Bot message bubbles — light blue-gray background */
+  --sdk-chat-window-bot-bubble-bg: #edf2f7;
+  --sdk-chat-window-bot-bubble-font-clr: #1a202c;
+  --sdk-chat-window-bot-bubble-shape: 12px 12px 12px 2px;
+  --sdk-chat-window-bot-bubble-border-clr: #e2e8f0;
+  --sdk-chat-window-bot-bubble-agent-bg: #e2ecf5;
+
+  /* User message bubbles — primary blue */
+  --sdk-chat-window-user-bubble-bg: #2c5282;
+  --sdk-chat-window-user-bubble-font-clr: #ffffff;
+  --sdk-chat-window-user-bubble-shape: 12px 12px 2px 12px;
+  --sdk-chat-window-user-bubble-border-clr: #2c5282;
+
+  /* Button colors */
+  --sdk-chat-window-btn-default-bg: #ffffff;
+  --sdk-chat-window-btn-link-color: #2c5282;
+  --sdk-chat-window-btn-border-clr: #2c5282;
+  --sdk-chat-window-btn-font-clr: #2c5282;
+  --sdk-chat-window-btn-hover-bg: #2c5282;
+  --sdk-chat-window-btn-hover-border-clr: #1e4a7a;
+  --sdk-chat-window-btn-hover-font-clr: #ffffff;
+
+  /* Header — dark navy like the banking navbar */
+  --sdk-chat-window-header-bg: #1a3a5c;
+  --sdk-chat-window-header-font-clr: #ffffff;
+  --sdk-chat-window-header-border-clr: #1a3a5c;
+
+  /* Body background */
+  --sdk-chat-window-body-bg: #f0f4f8;
+
+  /* Footer — compose bar area */
+  --sdk-chat-window-footer-bg: #ffffff;
+  --sdk-chat-window-footer-font-clr: #1a202c;
+  --sdk-chat-window-footer-border-clr: #e2e8f0;
+  --sdk-chat-window-footer-input-placeholder: #a0aec0;
+
+  /* General SDK variables */
+  --sdk-chat-widow-default-white: #ffffff;
+  --sdk-chat-widow-primary-blue-color: #2c5282;
+  --sdk-chat-widow-primary-border-color: #e2e8f0;
+  --sdk-chat-widow-primary-bg-color: #f0f4f8;
+  --sdk-chat-widow-panel-header-bg-color: #f0f4f8;
+  --sdk-chat-widow-secondary-font-color: #718096;
+}
+
+/* --- Minimized chat bubble (the floating icon) --- */
+.kore-chat-window.minimize .minimized {
+  background: #1a3a5c !important;
+  box-shadow: 0 4px 16px rgba(26, 58, 92, 0.35) !important;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.kore-chat-window.minimize .minimized:hover {
+  background: #2c5282 !important;
+  box-shadow: 0 6px 20px rgba(44, 82, 130, 0.45) !important;
+}
+
+/* Hover title tooltip next to the minimized icon */
+.kore-chat-window.minimize .minimized-title {
+  background: #1a3a5c !important;
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- Chat header bar --- */
+.kore-chat-window .kore-chat-header {
+  background: #1a3a5c !important;
+  border-bottom: none !important;
+}
+
+.kore-chat-window .kore-chat-header .header-title {
+  color: #ffffff !important;
+}
+
+/* Header control buttons (minimize, close, etc.) */
+.kore-chat-window .kore-chat-header .chat-box-controls button {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.kore-chat-window .kore-chat-header .chat-box-controls button:hover {
+  color: #ffffff !important;
+}
+
+/* Minimize button SVG paths */
+.kore-chat-window .kore-chat-header .chat-box-controls button svg path,
+.kore-chat-window .kore-chat-header .chat-box-controls button svg line,
+.kore-chat-window .kore-chat-header .chat-box-controls button svg rect {
+  stroke: rgba(255, 255, 255, 0.7) !important;
+}
+
+.kore-chat-window .kore-chat-header .chat-box-controls button:hover svg path,
+.kore-chat-window .kore-chat-header .chat-box-controls button:hover svg line,
+.kore-chat-window .kore-chat-header .chat-box-controls button:hover svg rect {
+  stroke: #ffffff !important;
+}
+
+/* --- Chat body / message area --- */
+.kore-chat-window .kore-chat-body {
+  background-color: #f0f4f8 !important;
+}
+
+/* --- User message styling --- */
+.kore-chat-window .kore-chat-body .fromCurrentUser .messageBubble {
+  background-color: #2c5282 !important;
+  color: #ffffff !important;
+  border-color: #2c5282 !important;
+  border-radius: 12px 12px 2px 12px !important;
+}
+
+/* --- Bot message styling --- */
+.kore-chat-window .kore-chat-body .fromOtherUsers .messageBubble {
+  background-color: #edf2f7 !important;
+  color: #1a202c !important;
+  border-color: #e2e8f0 !important;
+  border-radius: 12px 12px 12px 2px !important;
+}
+
+/* --- Quick reply / suggestion buttons --- */
+.kore-chat-window .quick_replies_btn_click,
+.kore-chat-window .buttonTmplContent .action_btn_click {
+  background-color: #ffffff !important;
+  border: 1.5px solid #2c5282 !important;
+  color: #2c5282 !important;
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+}
+
+.kore-chat-window .quick_replies_btn_click:hover,
+.kore-chat-window .buttonTmplContent .action_btn_click:hover {
+  background-color: #2c5282 !important;
+  color: #ffffff !important;
+}
+
+/* --- Footer / compose bar --- */
+.kore-chat-window .kore-chat-footer {
+  background: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
+}
+
+.kore-chat-window .kore-chat-footer .chatInputBox {
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.kore-chat-window .kore-chat-footer .chatInputBox:focus-within {
+  border-color: #3182ce !important;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15) !important;
+}
+
+/* Send button */
+.kore-chat-window .kore-chat-footer .sendButton {
+  background-color: #2c5282 !important;
+}
+
+.kore-chat-window .kore-chat-footer .sendButton:hover {
+  background-color: #1e4a7a !important;
+}
+
+/* --- Typing indicator --- */
+.kore-chat-window .typingIndicatorContent .typingIndicator > span {
+  background-color: #2c5282 !important;
+}
+
+/* --- Scrollbar styling to match the banking theme --- */
+.kore-chat-window .ps__rail-y > .ps__thumb-y {
+  background-color: #a0aec0 !important;
+}
+
+.kore-chat-window .ps__rail-y:hover > .ps__thumb-y {
+  background-color: #718096 !important;
+}
+
+/* --- Links inside chat --- */
+.kore-chat-window a {
+  color: #2c5282 !important;
+}
+
+.kore-chat-window a:hover {
+  color: #1e4a7a !important;
+}
+
+/* --- Timestamp text --- */
+.kore-chat-window .extra-info {
+  color: #718096 !important;
+  font-size: 11px !important;
+}
+
+/* --- Chat window border radius to match banking card style --- */
+.kore-chat-window:not(.minimize) {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}

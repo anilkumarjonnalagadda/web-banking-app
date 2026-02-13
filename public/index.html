@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureBank - Login</title>
+  <!-- Link to our shared stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============================================================ -->
+  <!-- Kore.ai Web SDK — Scripts and Styles                         -->
+  <!-- These load the virtual assistant chatbot on the page          -->
+  <!-- ============================================================ -->
+  <script src="kore-sdk/UI-libs/kore-no-conflict-start.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.tmpl.min.js"></script>
+  <script src="kore-sdk/UI-libs/jquery-ui.min.js"></script>
+  <link href="kore-sdk/UI-libs/jquery-ui.min.css" rel="stylesheet">
+  <script src="kore-sdk/UI-libs/moment.js"></script>
+  <script src="kore-sdk/libs/lodash.min.js"></script>
+  <script src="kore-sdk/libs/d3.v4.min.js"></script>
+  <script src="kore-sdk/libs/KoreGraphAdapter.js"></script>
+  <script src="kore-sdk/libs/anonymousassertion.js"></script>
+  <script src="kore-sdk/kore-bot-sdk-client.js"></script>
+  <script src="kore-sdk/libs/perfect-scrollbar.js"></script>
+  <script src="kore-sdk/chatWindow.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.daterangepicker.js"></script>
+  <link href="kore-sdk/UI-libs/daterangepicker.css" rel="stylesheet">
+  <script src="kore-sdk/UI-libs/jquery-clockpicker.js"></script>
+  <link href="kore-sdk/UI-libs/jquery-clockpicker.css" rel="stylesheet">
+  <link href="kore-sdk/libs/kore-pickers.css" rel="stylesheet">
+  <script src="kore-sdk/libs/kore-pickers.js"></script>
+  <script src="kore-sdk/libs/emoji.js"></script>
+  <script src="kore-sdk/libs/recorder.js"></script>
+  <script src="kore-sdk/libs/recorderWorker.js"></script>
+  <script src="kore-sdk/UI-libs/dompurify.js"></script>
+  <link href="kore-sdk/chatWindow.css" rel="stylesheet">
+  <link href="kore-sdk/kore-banking-theme.css" rel="stylesheet">
+  <link href="kore-sdk/libs/emojione.sprites.css" rel="stylesheet">
+  <link href="kore-sdk/libs/purejscarousel.css" rel="stylesheet">
+  <script src="kore-sdk/libs/purejscarousel.js"></script>
+  <script src="kore-sdk/custom/customTemplate.js"></script>
+  <link href="kore-sdk/libs/prefect-scrollbar.css" rel="stylesheet">
+  <link href="kore-sdk/custom/customTemplate.css" rel="stylesheet">
+  <script src="kore-sdk/kore-config.js"></script>
+  <script src="kore-sdk/kore-init.js"></script>
+  <script src="kore-sdk/UI-libs/kore-no-conflict-end.js"></script>
+</head>
+<body class="login-page">
+
+  <!-- LOGIN CARD — centered on the screen -->
+  <div class="login-container">
+    <!-- Bank logo / header -->
+    <div class="login-header">
+      <div class="bank-logo">SB</div>
+      <h1>SecureBank</h1>
+      <p>Internet Banking</p>
+    </div>
+
+    <!-- Login form -->
+    <form id="loginForm" class="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your username"
+          required
+          autocomplete="username"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+          autocomplete="current-password"
+        >
+      </div>
+
+      <!-- Error message area (hidden by default) -->
+      <div id="loginError" class="error-message hidden"></div>
+
+      <button type="submit" class="btn btn-primary btn-full">Login</button>
+    </form>
+
+    <!-- Demo credentials hint for testing -->
+    <div class="demo-credentials">
+      <p><strong>Demo Accounts:</strong></p>
+      <p>johndoe / pass123</p>
+      <p>janesmith / pass456</p>
+      <p>bobwilson / pass789</p>
+    </div>
+  </div>
+
+  <!-- Kore.ai chat container (the SDK renders the chat widget here) -->
+  <div id="kr_chatContainer"></div>
+
+  <!-- Login page has its own small script (kept separate for clarity) -->
+  <script>
+    // When the login form is submitted...
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      // Prevent the browser from reloading the page
+      e.preventDefault();
+
+      // Grab the values the user typed
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorDiv = document.getElementById("loginError");
+
+      // Hide any previous error
+      errorDiv.classList.add("hidden");
+
+      try {
+        // Send login request to our server
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Save the user info in sessionStorage so the dashboard can use it.
+          // sessionStorage is cleared when the browser tab is closed.
+          sessionStorage.setItem("user", JSON.stringify(data.user));
+
+          // Redirect to the dashboard page
+          window.location.href = "dashboard.html";
+        } else {
+          // Show the error message from the server
+          errorDiv.textContent = data.message;
+          errorDiv.classList.remove("hidden");
+        }
+      } catch (err) {
+        // Network error or server is down
+        errorDiv.textContent = "Unable to connect to the server. Is it running?";
+        errorDiv.classList.remove("hidden");
+      }
+    });
+  </script>
+
+</body>
+</html>

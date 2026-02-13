@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureBank - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============================================================ -->
+  <!-- Kore.ai Web SDK — Scripts and Styles                         -->
+  <!-- These load the virtual assistant chatbot on the page          -->
+  <!-- ============================================================ -->
+  <script src="kore-sdk/UI-libs/kore-no-conflict-start.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.tmpl.min.js"></script>
+  <script src="kore-sdk/UI-libs/jquery-ui.min.js"></script>
+  <link href="kore-sdk/UI-libs/jquery-ui.min.css" rel="stylesheet">
+  <script src="kore-sdk/UI-libs/moment.js"></script>
+  <script src="kore-sdk/libs/lodash.min.js"></script>
+  <script src="kore-sdk/libs/d3.v4.min.js"></script>
+  <script src="kore-sdk/libs/KoreGraphAdapter.js"></script>
+  <script src="kore-sdk/libs/anonymousassertion.js"></script>
+  <script src="kore-sdk/kore-bot-sdk-client.js"></script>
+  <script src="kore-sdk/libs/perfect-scrollbar.js"></script>
+  <script src="kore-sdk/chatWindow.js"></script>
+  <script src="kore-sdk/UI-libs/jquery.daterangepicker.js"></script>
+  <link href="kore-sdk/UI-libs/daterangepicker.css" rel="stylesheet">
+  <script src="kore-sdk/UI-libs/jquery-clockpicker.js"></script>
+  <link href="kore-sdk/UI-libs/jquery-clockpicker.css" rel="stylesheet">
+  <link href="kore-sdk/libs/kore-pickers.css" rel="stylesheet">
+  <script src="kore-sdk/libs/kore-pickers.js"></script>
+  <script src="kore-sdk/libs/emoji.js"></script>
+  <script src="kore-sdk/libs/recorder.js"></script>
+  <script src="kore-sdk/libs/recorderWorker.js"></script>
+  <script src="kore-sdk/UI-libs/dompurify.js"></script>
+  <link href="kore-sdk/chatWindow.css" rel="stylesheet">
+  <link href="kore-sdk/kore-banking-theme.css" rel="stylesheet">
+  <link href="kore-sdk/libs/emojione.sprites.css" rel="stylesheet">
+  <link href="kore-sdk/libs/purejscarousel.css" rel="stylesheet">
+  <script src="kore-sdk/libs/purejscarousel.js"></script>
+  <script src="kore-sdk/custom/customTemplate.js"></script>
+  <link href="kore-sdk/libs/prefect-scrollbar.css" rel="stylesheet">
+  <link href="kore-sdk/custom/customTemplate.css" rel="stylesheet">
+  <script src="kore-sdk/kore-config.js"></script>
+  <script src="kore-sdk/kore-init.js"></script>
+  <script src="kore-sdk/UI-libs/kore-no-conflict-end.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- NAVIGATION BAR — shown on all dashboard pages                -->
+  <!-- ============================================================ -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="nav-logo">SB</span>
+      <span class="nav-title">SecureBank</span>
+    </div>
+    <div class="nav-links">
+      <!-- These buttons switch between different "views" on the page -->
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="transfer">Transfer</button>
+      <button class="nav-btn" data-view="history">History</button>
+      <button class="nav-btn nav-btn-logout" id="logoutBtn">Logout</button>
+    </div>
+    <!-- Hamburger menu for mobile screens -->
+    <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+  </nav>
+
+  <!-- Mobile menu (shown when hamburger is clicked) -->
+  <div class="mobile-menu hidden" id="mobileMenu">
+    <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+    <button class="nav-btn" data-view="transfer">Transfer</button>
+    <button class="nav-btn" data-view="history">History</button>
+    <button class="nav-btn nav-btn-logout" id="logoutBtnMobile">Logout</button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MAIN CONTENT AREA                                            -->
+  <!-- Only one "view" is visible at a time. JavaScript toggles them. -->
+  <!-- ============================================================ -->
+  <main class="main-content">
+
+    <!-- ======== DASHBOARD VIEW ======== -->
+    <section id="view-dashboard" class="view active">
+      <!-- Welcome banner -->
+      <div class="welcome-banner">
+        <h2>Welcome, <span id="userName">User</span>!</h2>
+        <p>Here's your account overview</p>
+      </div>
+
+      <!-- Account summary cards -->
+      <div class="section-title">Your Accounts</div>
+      <div id="accountCards" class="account-cards">
+        <!-- Account cards are inserted here by JavaScript -->
+      </div>
+
+      <!-- Quick action buttons -->
+      <div class="quick-actions">
+        <button class="btn btn-primary" id="quickTransfer">Fund Transfer</button>
+        <button class="btn btn-secondary" id="quickHistory">Transaction History</button>
+      </div>
+
+      <!-- Mini statement (last 5 transactions) -->
+      <div class="section-title">Mini Statement (Last 5 Transactions)</div>
+      <!-- Account selector for mini statement -->
+      <div class="form-group" style="max-width: 400px; margin-bottom: 1rem;">
+        <select id="miniStatementAccount" class="form-select">
+          <!-- Options populated by JavaScript -->
+        </select>
+      </div>
+      <div class="table-wrapper">
+        <table class="txn-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="miniStatementBody">
+            <!-- Rows inserted by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======== TRANSFER VIEW ======== -->
+    <section id="view-transfer" class="view hidden">
+      <div class="section-title">Fund Transfer</div>
+
+      <div class="form-card">
+        <form id="transferForm">
+          <!-- From account (user's own accounts) -->
+          <div class="form-group">
+            <label for="fromAccount">From Account</label>
+            <select id="fromAccount" class="form-select" required>
+              <!-- Options populated by JavaScript -->
+            </select>
+          </div>
+
+          <!-- To account (any account number) -->
+          <div class="form-group">
+            <label for="toAccount">To Account Number</label>
+            <input
+              type="text"
+              id="toAccount"
+              placeholder="Enter recipient account number"
+              required
+            >
+          </div>
+
+          <!-- Transfer amount -->
+          <div class="form-group">
+            <label for="transferAmount">Amount ($)</label>
+            <input
+              type="number"
+              id="transferAmount"
+              placeholder="0.00"
+              min="0.01"
+              step="0.01"
+              required
+            >
+          </div>
+
+          <!-- Description / memo -->
+          <div class="form-group">
+            <label for="transferDesc">Description</label>
+            <input
+              type="text"
+              id="transferDesc"
+              placeholder="e.g. Rent payment"
+              required
+            >
+          </div>
+
+          <!-- Message area for success/error -->
+          <div id="transferMessage" class="hidden"></div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Transfer Funds
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ======== TRANSACTION HISTORY VIEW ======== -->
+    <section id="view-history" class="view hidden">
+      <div class="section-title">Transaction History</div>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <div class="form-group">
+          <label for="historyAccount">Account</label>
+          <select id="historyAccount" class="form-select">
+            <!-- Options populated by JavaScript -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dateFrom">From Date</label>
+          <input type="date" id="dateFrom" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="dateTo">To Date</label>
+          <input type="date" id="dateTo" class="form-input">
+        </div>
+        <button class="btn btn-primary" id="filterBtn">Filter</button>
+      </div>
+
+      <!-- Transaction table -->
+      <div class="table-wrapper">
+        <table class="txn-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody">
+            <!-- Rows inserted by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Shown when there are no transactions -->
+      <div id="noTransactions" class="no-data hidden">
+        No transactions found for the selected filters.
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Kore.ai chat container (the SDK renders the chat widget here) -->
+  <div id="kr_chatContainer"></div>
+
+  <!-- Load the main application JavaScript -->
+  <script src="app.js"></script>
+
+</body>
+</html>

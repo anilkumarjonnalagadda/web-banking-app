@@ -1,0 +1,12 @@
+{
+  "name": "web-banking-app",
+  "version": "1.0.0",
+  "description": "A simple internet web banking application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

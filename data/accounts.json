@@ -1,0 +1,32 @@
+[
+  {
+    "accountNumber": "1001001001",
+    "userId": "user1",
+    "type": "Savings",
+    "balance": 14000
+  },
+  {
+    "accountNumber": "1001001002",
+    "userId": "user1",
+    "type": "Current",
+    "balance": 9500.5
+  },
+  {
+    "accountNumber": "2002002001",
+    "userId": "user2",
+    "type": "Savings",
+    "balance": 22000
+  },
+  {
+    "accountNumber": "3003003001",
+    "userId": "user3",
+    "type": "Savings",
+    "balance": 5000.75
+  },
+  {
+    "accountNumber": "3003003002",
+    "userId": "user3",
+    "type": "Current",
+    "balance": 12300
+  }
+]

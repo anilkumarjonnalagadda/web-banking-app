@@ -1,0 +1,200 @@
+[
+  {
+    "id": "txn001",
+    "accountNumber": "1001001001",
+    "date": "2026-02-01",
+    "description": "Salary Credit",
+    "amount": 5000,
+    "type": "credit",
+    "balanceAfter": 15000
+  },
+  {
+    "id": "txn002",
+    "accountNumber": "1001001001",
+    "date": "2026-02-03",
+    "description": "Grocery Store",
+    "amount": 150,
+    "type": "debit",
+    "balanceAfter": 14850
+  },
+  {
+    "id": "txn003",
+    "accountNumber": "1001001001",
+    "date": "2026-02-05",
+    "description": "Electric Bill Payment",
+    "amount": 200,
+    "type": "debit",
+    "balanceAfter": 14650
+  },
+  {
+    "id": "txn004",
+    "accountNumber": "1001001001",
+    "date": "2026-02-07",
+    "description": "Online Transfer Received",
+    "amount": 500,
+    "type": "credit",
+    "balanceAfter": 15150
+  },
+  {
+    "id": "txn005",
+    "accountNumber": "1001001001",
+    "date": "2026-02-10",
+    "description": "ATM Withdrawal",
+    "amount": 150,
+    "type": "debit",
+    "balanceAfter": 15000
+  },
+  {
+    "id": "txn006",
+    "accountNumber": "1001001002",
+    "date": "2026-02-02",
+    "description": "Freelance Payment",
+    "amount": 3000,
+    "type": "credit",
+    "balanceAfter": 8500.5
+  },
+  {
+    "id": "txn007",
+    "accountNumber": "1001001002",
+    "date": "2026-02-06",
+    "description": "Rent Payment",
+    "amount": 1500,
+    "type": "debit",
+    "balanceAfter": 7000.5
+  },
+  {
+    "id": "txn008",
+    "accountNumber": "1001001002",
+    "date": "2026-02-09",
+    "description": "Refund - Online Purchase",
+    "amount": 1500,
+    "type": "credit",
+    "balanceAfter": 8500.5
+  },
+  {
+    "id": "txn009",
+    "accountNumber": "2002002001",
+    "date": "2026-02-01",
+    "description": "Salary Credit",
+    "amount": 7000,
+    "type": "credit",
+    "balanceAfter": 22000
+  },
+  {
+    "id": "txn010",
+    "accountNumber": "2002002001",
+    "date": "2026-02-04",
+    "description": "Insurance Premium",
+    "amount": 500,
+    "type": "debit",
+    "balanceAfter": 21500
+  },
+  {
+    "id": "txn011",
+    "accountNumber": "2002002001",
+    "date": "2026-02-08",
+    "description": "Investment Deposit",
+    "amount": 1000,
+    "type": "debit",
+    "balanceAfter": 20500
+  },
+  {
+    "id": "txn012",
+    "accountNumber": "2002002001",
+    "date": "2026-02-11",
+    "description": "Dividend Received",
+    "amount": 1500,
+    "type": "credit",
+    "balanceAfter": 22000
+  },
+  {
+    "id": "txn013",
+    "accountNumber": "3003003001",
+    "date": "2026-02-02",
+    "description": "Part-time Job Pay",
+    "amount": 2000,
+    "type": "credit",
+    "balanceAfter": 5000.75
+  },
+  {
+    "id": "txn014",
+    "accountNumber": "3003003001",
+    "date": "2026-02-06",
+    "description": "Phone Bill",
+    "amount": 80,
+    "type": "debit",
+    "balanceAfter": 4920.75
+  },
+  {
+    "id": "txn015",
+    "accountNumber": "3003003001",
+    "date": "2026-02-10",
+    "description": "Cash Deposit",
+    "amount": 80,
+    "type": "credit",
+    "balanceAfter": 5000.75
+  },
+  {
+    "id": "txn016",
+    "accountNumber": "3003003002",
+    "date": "2026-02-03",
+    "description": "Business Income",
+    "amount": 5000,
+    "type": "credit",
+    "balanceAfter": 12300
+  },
+  {
+    "id": "txn017",
+    "accountNumber": "3003003002",
+    "date": "2026-02-07",
+    "description": "Office Supplies",
+    "amount": 350,
+    "type": "debit",
+    "balanceAfter": 11950
+  },
+  {
+    "id": "txn018",
+    "accountNumber": "3003003002",
+    "date": "2026-02-11",
+    "description": "Client Payment",
+    "amount": 350,
+    "type": "credit",
+    "balanceAfter": 12300
+  },
+  {
+    "id": "txn1770964857983_deb",
+    "accountNumber": "1001001001",
+    "date": "2026-02-13",
+    "description": "Transfer to 1001001002 - Test payment",
+    "amount": 500,
+    "type": "debit",
+    "balanceAfter": 14500
+  },
+  {
+    "id": "txn1770964857983_crd",
+    "accountNumber": "1001001002",
+    "date": "2026-02-13",
+    "description": "Transfer from 1001001001 - Test payment",
+    "amount": 500,
+    "type": "credit",
+    "balanceAfter": 9000.5
+  },
+  {
+    "id": "txn1770966060859_deb",
+    "accountNumber": "1001001001",
+    "date": "2026-02-13",
+    "description": "Transfer to 1001001002 - Test payment",
+    "amount": 500,
+    "type": "debit",
+    "balanceAfter": 14000
+  },
+  {
+    "id": "txn1770966060859_crd",
+    "accountNumber": "1001001002",
+    "date": "2026-02-13",
+    "description": "Transfer from 1001001001 - Test payment",
+    "amount": 500,
+    "type": "credit",
+    "balanceAfter": 9500.5
+  }
+]
