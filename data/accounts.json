@@ -3,13 +3,13 @@
     "accountNumber": "1001001001",
     "userId": "user1",
     "type": "Savings",
-    "balance": 14000
+    "balance": 13500
   },
   {
     "accountNumber": "1001001002",
     "userId": "user1",
     "type": "Current",
-    "balance": 9500.5
+    "balance": 10000.5
   },
   {
     "accountNumber": "2002002001",

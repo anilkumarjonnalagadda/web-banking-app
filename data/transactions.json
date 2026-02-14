@@ -196,5 +196,23 @@
     "amount": 500,
     "type": "credit",
     "balanceAfter": 9500.5
+  },
+  {
+    "id": "txn1770991045937_deb",
+    "accountNumber": "1001001001",
+    "date": "2026-02-13",
+    "description": "Transfer to 1001001002 - Test payment",
+    "amount": 500,
+    "type": "debit",
+    "balanceAfter": 13500
+  },
+  {
+    "id": "txn1770991045937_crd",
+    "accountNumber": "1001001002",
+    "date": "2026-02-13",
+    "description": "Transfer from 1001001001 - Test payment",
+    "amount": 500,
+    "type": "credit",
+    "balanceAfter": 10000.5
   }
 ]
