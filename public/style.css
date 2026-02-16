@@ -1,22 +1,22 @@
 /* ============================================================
-   style.css — Complete styles for the Web Banking App
-   Color scheme: Professional blues and whites
+   style.css — Complete styles for the Kore Banking App
+   Color scheme: Kore.ai brand — charcoal, blue, and whites
    ============================================================ */
 
-/* --- CSS Variables (easy to change the theme from here) --- */
+/* --- CSS Variables (Kore.ai brand palette) --- */
 :root {
-  --primary: #1a3a5c;       /* Dark navy blue — navbar, headers */
-  --primary-light: #2c5282; /* Medium blue — buttons, accents */
-  --primary-hover: #1e4a7a; /* Slightly lighter — hover states */
-  --accent: #3182ce;        /* Bright blue — links, highlights */
+  --primary: #181818;       /* Charcoal — navbar, headers */
+  --primary-light: #1077d7; /* Kore blue — buttons, accents */
+  --primary-hover: #0d5ea8; /* Darker blue — hover states */
+  --accent: #2F8FFF;        /* Light blue — links, highlights, gradients */
   --success: #38a169;       /* Green — success messages */
   --danger: #e53e3e;        /* Red — errors, debit amounts */
-  --bg-light: #f0f4f8;      /* Very light blue-gray — page background */
+  --bg-light: #f0f6f9;      /* Very light gray — page background */
   --bg-white: #ffffff;       /* White — cards, forms */
-  --text-dark: #1a202c;     /* Near-black — main text */
-  --text-muted: #718096;    /* Gray — secondary text */
-  --border: #e2e8f0;        /* Light gray — borders */
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow for cards */
+  --text-dark: #181818;     /* Charcoal — main text */
+  --text-muted: #6b7280;    /* Gray — secondary text */
+  --border: #d9e0e3;        /* Light gray — borders */
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* Subtle shadow for cards */
 }
 
 /* --- Global Reset & Base Styles --- */
@@ -27,7 +27,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
@@ -141,7 +141,7 @@ body {
 .form-input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+  box-shadow: 0 0 0 3px rgba(16, 119, 215, 0.15);
 }
 
 /* ============================================================
@@ -499,11 +499,11 @@ body {
 
 /* Alternating row colors for readability */
 .txn-table tbody tr:nth-child(even) {
-  background-color: #f7fafc;
+  background-color: #f5f8fa;
 }
 
 .txn-table tbody tr:hover {
-  background-color: #edf2f7;
+  background-color: #e8eff5;
 }
 
 /* Color-coding for credit (green) and debit (red) */
