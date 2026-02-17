@@ -15,11 +15,11 @@
   botOptions.JWTUrl = "https://mk2r2rmj21.execute-api.us-east-1.amazonaws.com/dev/users/sts";
   botOptions.userIdentity = "aniljonnalagaddakumar@gmail.com";
   botOptions.botInfo = {
-    name: "Advance Training Jan 2026",
-    _id: "st-40988f63-3e63-5b7d-82bb-4994f6cacabf",
+    name: "Automation Advanced Feb 2026",
+    _id: "st-759e21a8-fe06-5b93-bf2b-bb1824ed561f",
   };
-  botOptions.clientId = "cs-654936d7-932b-59ae-8b0d-6a65244f796f";
-  botOptions.clientSecret = "oBQv6jdUkmr8uQk08dvsNBK2v8/R3zEP8RXpVZAzzrQ=";
+  botOptions.clientId = "cs-06aae219-211a-56d2-84d0-b89cda1897bd";
+  botOptions.clientSecret = "w+ozPfhc3rSXl7prNngNboxVborhITAziOLO5AwO5Sk=";
   botOptions.botInfo.customData = {"name":"John"}
 
   // --- Chat window configuration ---
