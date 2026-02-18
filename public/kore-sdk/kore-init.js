@@ -14,17 +14,12 @@
 
       // --- Dynamically set the logged-in user's name in customData ---
       var loggedInUser = sessionStorage.getItem("user");
-      var userName = "User";
       if (loggedInUser) {
         var userData = JSON.parse(loggedInUser);
-        userName = userData.fullName || "User";
+        chatConfig.botOptions.botInfo.customData = {
+          name: userData.fullName || "User",
+        };
       }
-      // Set customData directly on botInfo
-      chatConfig.botOptions.botInfo.customData = { name: userName };
-      // Also set customDataFn for dynamic per-message delivery
-      chatConfig.botOptions.botInfo.customDataFn = function () {
-        return { name: userName };
-      };
 
       // Create chat window instance
       var chatWindowInstance = new chatWindow();
