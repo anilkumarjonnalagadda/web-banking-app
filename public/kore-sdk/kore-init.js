@@ -12,15 +12,6 @@
       var chatConfig = window._koreChatConfig || KoreChatSDK.chatConfig;
       var chatWindow = KoreChatSDK.chatWindow;
 
-      // --- Dynamically set the logged-in user's name in customData ---
-      var loggedInUser = sessionStorage.getItem("user");
-      if (loggedInUser) {
-        var userData = JSON.parse(loggedInUser);
-        chatConfig.botOptions.botInfo.customData = {
-          name: userData.fullName || "User",
-        };
-      }
-
       // Create chat window instance
       var chatWindowInstance = new chatWindow();
 
