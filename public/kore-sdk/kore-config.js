@@ -20,7 +20,8 @@
   };
   botOptions.clientId = "cs-06aae219-211a-56d2-84d0-b89cda1897bd";
   botOptions.clientSecret = "w+ozPfhc3rSXl7prNngNboxVborhITAziOLO5AwO5Sk=";
-  botOptions.botInfo.customData = {"name":"John"}
+  var user = JSON.parse(sessionStorage.getItem("user"));
+  botOptions.botInfo.customData = {"name": user.fullName};
 
   // --- Chat window configuration ---
   chatConfig.chatTitle = "Kore Banking Assistant";
